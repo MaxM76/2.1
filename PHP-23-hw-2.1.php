@@ -1,3 +1,23 @@
+<?php
+
+$filename = "ftp://mmarkelov:neto1755@university.netology.ru/me/lesson-2.1/phonebook.json";
+if (file_exists($filename)) {
+    $phonebookJSON = file_get_contents($filename);
+} else {
+    exit('Телефонная книга не найдена');
+}
+
+if ($phonebookJSON === false) {
+    exit('Не удалось получить данные');
+}
+
+$phonebookArr = json_decode($phonebookJSON, true);
+if ($phonebookArr === null) {
+    exit('Ошибка декодирования .json файла');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
   <head>
@@ -20,27 +40,19 @@
            <td>Электронная почта</td>
        </tr>
       </thead>
-<?php
-    $filename = "ftp://mmarkelov:neto1755@university.netology.ru/me/lesson-2.1/phonebook.json";
-    if (file_exists($filename)/*true*/) {
-        $phonebook_json = file_get_contents($filename);
-        $phonebook_arr = json_decode($phonebook_json, true);
-        ?>
 
-        <?php foreach($phonebook_arr as $item) { ?>
+        <?php
+        foreach($phonebookArr as $item) { ?>
             <tr>
-              <td><?php echo $item["name"]; ?></td>
+              <td><?= $item["name"]; ?></td>
               <td><?php echo $item["lastname"]; ?></td>
               <td><?php echo $item["phone"]; ?></td>
               <td><?php echo $item["address"]; ?></td>
               <td><?php echo $item["email"]; ?></td>
             </tr>
-        <?php }
-    } else {
-        echo "Телефонная книга не найдена";
-    }
-
-    ?>
+        <?php
+        }
+        ?>
 
     </table>
   </body>
