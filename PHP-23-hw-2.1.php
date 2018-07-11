@@ -45,10 +45,10 @@ if ($phonebookArr === null) {
         foreach($phonebookArr as $item) { ?>
             <tr>
               <td><?= $item["name"]; ?></td>
-              <td><?php echo $item["lastname"]; ?></td>
-              <td><?php echo $item["phone"]; ?></td>
-              <td><?php echo $item["address"]; ?></td>
-              <td><?php echo $item["email"]; ?></td>
+              <td><?= $item["lastname"]; ?></td>
+              <td><?= $item["phone"]; ?></td>
+              <td><?= $item["address"]; ?></td>
+              <td><?= $item["email"]; ?></td>
             </tr>
         <?php
         }
