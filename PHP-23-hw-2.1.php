@@ -1,6 +1,6 @@
 <?php
 
-$filename = "ftp://mmarkelov:neto1755@university.netology.ru/me/lesson-2.1/phonebook.json";
+$filename = 'phonebook.json';
 if (file_exists($filename)) {
     $phonebookJSON = file_get_contents($filename);
 } else {
